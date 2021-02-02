@@ -16,9 +16,11 @@ const StyledNav = styled.nav`
   align-items: center;
   background-color: silver;
   height: 10vh;
-
+  a {
+    text-decoration: underline;
+  }
   a:hover {
-    background-color: aqua;
+    color: white;
   }
 `;
 const MyMenu = () => {
