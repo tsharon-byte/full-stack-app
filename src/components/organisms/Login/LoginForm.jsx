@@ -1,8 +1,9 @@
 import React from "react";
 import * as Yup from "yup";
-import { Button, Input, Space, Card, message } from "antd";
+import { message } from "antd";
 import styled from "styled-components";
 import { Formik, Form, Field } from "formik";
+import { Button, Input } from "../../atoms";
 const Error = styled.div`
   color: indianred;
   text-align: start;
@@ -10,7 +11,7 @@ const Error = styled.div`
 const Elem = styled.div`
   height: 80px;
 `;
-const StyledCard = styled(Card)`
+const StyledCard = styled.div`
   width: 450px;
 `;
 const Wrapper = styled.div`
@@ -47,27 +48,25 @@ const LoginForm = ({ visible, handleSubmit }) => (
     >
       {({ errors, touched, handleSubmit }) => (
         <Form>
-          <Space direction="vertical">
-            <StyledCard>
-              <Elem>
-                <label htmlFor="email">Email Address</label>
-                <Field name="email" placeholder="Enter email" as={Input} />
-                <Error>{touched.email && errors.email}</Error>
-              </Elem>
-              <Elem>
-                <label htmlFor="password">Password</label>
-                <Field
-                  name="password"
-                  as={Input.Password}
-                  placeholder="Enter password"
-                />
-                <Error>{touched.password && errors.password}</Error>
-              </Elem>
-              <Button onClick={handleSubmit} type="primary">
-                LOG IN
-              </Button>
-            </StyledCard>
-          </Space>
+          <StyledCard>
+            <Elem>
+              <label htmlFor="email">Email Address</label>
+              <Field name="email" placeholder="Enter email" as={Input} />
+              <Error>{touched.email && errors.email}</Error>
+            </Elem>
+            <Elem>
+              <label htmlFor="password">Password</label>
+              <Field
+                name="password"
+                as={Input.Password}
+                placeholder="Enter password"
+              />
+              <Error>{touched.password && errors.password}</Error>
+            </Elem>
+            <Button onClick={handleSubmit} type="primary">
+              LOG IN
+            </Button>
+          </StyledCard>
         </Form>
       )}
     </Formik>

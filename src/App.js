@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import MyMenu from "./components/MyMenu";
+import MyMenu from "./components/organisms/Menu/MyMenu";
 import About from "./pages/About";
 import Home from "./pages/Home";
 

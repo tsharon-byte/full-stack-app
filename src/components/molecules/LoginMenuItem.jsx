@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { Button, Avatar, Popover } from "antd";
-import { logout } from "../redux/actions/auth";
+import { Avatar, Popover } from "antd";
+import { logout } from "../../redux/actions/auth";
 import { UserOutlined } from "@ant-design/icons";
+import { Button } from "../atoms";
 const Wrapper = styled.div`
   .ant-popover-inner-content {
     padding-left: 0 !important;
@@ -12,8 +13,18 @@ const Wrapper = styled.div`
 `;
 const StyledMenuItem = styled.div`
   &:hover {
-    color: #177ddc;
+    color: ${({ theme }) => theme.primary};
   }
+`;
+const StyledButton = styled(Button)`
+  background-color: ${({ theme }) => theme.primary};
+  &:hover {
+    color: ${({ theme }) => theme.primary};
+    background-color: ${({ theme }) => theme.textPrimary};
+  }
+`;
+const StyledAvatar = styled(Avatar)`
+  background-color: ${({ theme }) => theme.primary};
 `;
 const LoginMenuItem = ({ isLogged, setIsModalVisible }) => {
   const dispatch = useDispatch();
@@ -27,14 +38,12 @@ const LoginMenuItem = ({ isLogged, setIsModalVisible }) => {
   return (
     <>
       {!isLogged ? (
-        <Button onClick={() => setIsModalVisible(true)}>LOG IN</Button>
+        <StyledButton onClick={() => setIsModalVisible(true)}>
+          LOG IN
+        </StyledButton>
       ) : (
         <Popover placement="bottomRight" content={content} trigger="click">
-          <Avatar
-            size="large"
-            icon={<UserOutlined />}
-            style={{ backgroundColor: "#177ddc" }}
-          />
+          <StyledAvatar size="large" icon={<UserOutlined />} />
         </Popover>
       )}
     </>

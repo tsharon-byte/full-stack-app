@@ -1,26 +1,28 @@
-import { Button } from "antd";
-import { UserOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useState } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from "styled-components/macro";
+import { NavLink } from "react-router-dom";
 
-import Logo from "./Logo";
-import LoginModal from "./modals/Login/LoginModal";
-import { logout } from "../redux/actions/auth";
-import LoginMenuItem from "../components/LoginMenuItem";
+import Logo from "../../molecules/Logo";
+import LoginModal from "../Login/LoginModal";
+import LoginMenuItem from "../../molecules/LoginMenuItem";
 
 const StyledNav = styled.nav`
   display: flex !important;
   justify-content: space-around;
   align-items: center;
-  background-color: silver;
+  background: transparent;
   height: 10vh;
-  a {
+`;
+const StyledLink = styled(NavLink)`
+  color: ${(props) => props.theme.textPrimary};
+  &:hover {
+    color: ${(props) => props.theme.primary};
     text-decoration: underline;
   }
-  a:hover {
-    color: white;
+  &.active {
+    color: ${(props) => props.theme.primary};
+    text-decoration: underline;
   }
 `;
 const MyMenu = () => {
@@ -31,8 +33,12 @@ const MyMenu = () => {
     <>
       <StyledNav>
         <Logo />
-        <Link to="/about">ABOUT</Link>
-        <Link to="/">HOME</Link>
+        <StyledLink to="/about" activeStyle>
+          ABOUT
+        </StyledLink>
+        <StyledLink to="/" activeStyle exact>
+          HOME
+        </StyledLink>
         <LoginMenuItem
           isLogged={isLogged}
           setIsModalVisible={setIsModalVisible}
