@@ -11,8 +11,10 @@ const StyledNav = styled.nav`
   display: flex !important;
   justify-content: space-around;
   align-items: center;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.4);
   height: 10vh;
+  z-index: 10;
+  position: relative;
 `;
 const StyledLink = styled(NavLink)`
   color: ${(props) => props.theme.textPrimary};
