@@ -5,12 +5,11 @@ import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 
 const Carousel = styled.div`
-  height: 100vh;
-  width: 100%;
   display: flex;
   box-sizing: border-box;
   z-index: 1;
-  position: absolute;
+  min-height: 100vh;
+  overflow: hidden;
 `;
 
 const Slide = styled.div`
@@ -25,14 +24,17 @@ const Slide = styled.div`
 const CarouselButton = styled.button`
   padding: 0;
   box-sizing: border-box;
+  border: none;
   margin: 0;
   position: absolute;
   min-height: 100%;
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
   color: white;
   outline: none;
   &:hover {
-    background-color: rgba(0, 0, 0, 0.365);
+    color: ${({ theme }) => theme.primary};
     cursor: pointer;
   }
   svg {
